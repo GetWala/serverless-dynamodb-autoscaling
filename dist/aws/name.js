@@ -71,6 +71,14 @@ class Name {
         return this.options.service;
     }
     suffix() {
+        if (this.options.table['name']) {
+            return [
+                this.options.table['name'],
+                this.options.index,
+                this.options.stage,
+                this.options.region
+            ].map(ucfirst).join('');
+        }
         return [
             this.options.table,
             this.options.index,
