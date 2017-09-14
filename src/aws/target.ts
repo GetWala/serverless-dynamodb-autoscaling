@@ -27,6 +27,7 @@ export default class Target extends Resource {
         resource.push('/index/', this.options.index)
       }
       DependsOn = [this.options.table, nameRole].concat(this.dependencies)
+      resource = { 'Fn::Join': ['', resource] };
     }
     return {
       [nameTarget]: {
@@ -34,7 +35,7 @@ export default class Target extends Resource {
         Properties: {
           MaxCapacity: this.max,
           MinCapacity: this.min,
-          ResourceId: { 'Fn::Join': ['', resource] },
+          ResourceId: resource,
           RoleARN: { 'Fn::GetAtt': [nameRole, 'Arn'] },
           ScalableDimension: nameDimension,
           ServiceNamespace: 'dynamodb'

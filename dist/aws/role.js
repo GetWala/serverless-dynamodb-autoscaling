@@ -64,7 +64,7 @@ class Role extends resource_1.default {
     resource() {
         if (this.options.table && this.options.table['name'] && typeof this.options.table['name'] === 'string') {
             return {
-                'Fn::Join': ['', ['arn:aws:dynamodb:*:', { Ref: 'AWS::AccountId' }, ':table/', this.options.table['name']]]
+                'Fn::Join': ['', ['arn:aws:dynamodb:*:', { Ref: 'AWS::AccountId' }, `:table/${this.options.table['name']}`]]
             };
         }
         else {
