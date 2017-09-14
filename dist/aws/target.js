@@ -17,7 +17,9 @@ class Target extends resource_1.default {
         let resource;
         if (this.options.table && this.options.table['name'] && typeof this.options.table['name'] === 'string') {
             resource = `table/${this.options.table['name']}`;
-            resource += `/index/${this.options.index}`;
+            if (this.options.index !== '' || this.options.index.length > 0) {
+                resource += `/index/${this.options.index}`;
+            }
             DependsOn = [nameRole].concat(this.dependencies);
         }
         else {
