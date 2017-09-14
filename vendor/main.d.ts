@@ -18,7 +18,6 @@ declare interface Options {
   service: string
   stage: string
   table: string
-  tableName: string
 }
 
 /**

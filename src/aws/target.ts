@@ -12,21 +12,10 @@ export default class Target extends Resource {
 
   public toJSON(): any {
     let resource;
-    if (this.options.tableName) {
-      resource = `table/${this.options.tableName}`;
+      resource = `table/${this.options.table}`;
       if (this.options.index !== '') {
         resource += `/index/${this.options.index}`
       }
-
-    }
-    else {
-      resource = ['table/', { Ref: this.options.table }];
-      if (this.options.index !== '') {
-        resource.push('/index/', this.options.index)
-      }
-      resource = { 'Fn::Join': ['', resource] }
-    }
-
     const nameTarget = this.name.target(this.read)
     const nameRole = this.name.role()
     const nameDimension = this.name.dimension(this.read)
