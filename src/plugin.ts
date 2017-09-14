@@ -102,7 +102,7 @@ class Plugin {
 
     // Start processing configuration
     this.serverless.cli.log(
-      util.format(text.CLI_RESOURCE, table, (index ? ('/index/' + index) : ''))
+      util.format(text.CLI_RESOURCE, table['name'] ? table['name'] : table, (index ? ('/index/' + index) : ''))
     )
 
     // Add role to manage Auto Scaling policies
