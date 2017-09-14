@@ -19,7 +19,9 @@ export default class Target extends Resource {
     let resource;
     if (this.options.table && this.options.table['name'] && typeof this.options.table['name'] === 'string') {
       resource = `table/${this.options.table['name']}`;
-      resource += `/index/${this.options.index}`
+      if (this.options.index !== '') {
+        resource += `/index/${this.options.index}`
+      }
       DependsOn = [nameRole].concat(this.dependencies)
     } else {
       resource = ['table/', { Ref: this.options.table }]
